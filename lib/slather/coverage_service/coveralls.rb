@@ -86,6 +86,7 @@ module Slather
           `curl -s --form json_file=@#{f.path} #{coveralls_api_jobs_path}`
         rescue StandardError => e
           FileUtils.rm(f)
+          puts "Error sending to Coveralls : #{e.message}"
           raise e
         end
         FileUtils.rm(f)
